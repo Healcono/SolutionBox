@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جعبه راه‌حل‌ها</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="text-gray-900">
+
+    <div class="container mx-auto p-4 md:p-8 min-h-screen flex flex-col">
+        <header class="text-center mb-6">
+            <div class="relative py-2">
+                <!-- Absolute positioned controls -->
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-x-4">
+                    <div id="lang-switcher" class="flex gap-x-2">
+                        <img src="https://flagcdn.com/ir.svg" width="28" alt="فارسی" class="lang-btn active" data-lang="fa">
+                        <img src="https://flagcdn.com/gb.svg" width="28" alt="English" class="lang-btn" data-lang="en">
+                        <img src="https://flagcdn.com/sa.svg" width="28" alt="العربية" class="lang-btn" data-lang="ar">
+                    </div>
+                    <button id="help-btn" class="bg-gray-200 text-gray-700 hover:bg-indigo-100 hover:text-indigo-700 font-bold w-10 h-10 rounded-full transition-colors flex items-center justify-center text-xl" aria-label="Help">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    </button>
+                </div>
+                <!-- Centered Title -->
+                <div class="flex flex-col items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-700 mb-2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    <h1 class="text-3xl md:text-4xl font-bold text-indigo-700" data-translate-key="mainTitle">جعبه راه‌حل‌ها</h1>
+                </div>
+            </div>
+            <p class="text-gray-500 mt-2 text-md md:text-lg" data-translate-key="subtitle">پیمایش چالش‌های تغذیه‌ای نوجوانان با راه‌حل‌های مبتنی بر شواهد</p>
+            <div id="breadcrumb" class="mt-4 h-6" role="navigation" aria-label="Breadcrumb"></div>
+        </header>
+
+        <div class="mb-6 max-w-2xl mx-auto">
+            <div class="flex items-center gap-2">
+                <input type="search" id="search-input" data-translate-placeholder="searchPlaceholder" placeholder="جستجو در دامنه‌ها، مشکلات و راه‌حل‌ها..." class="w-full px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition" aria-label="Search">
+                <button id="google-search-btn" class="bg-gray-200 text-gray-700 p-3 rounded-full hover:bg-gray-300 transition-colors flex-shrink-0" aria-label="Search with Google">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <main class="flex-grow">
+            <!-- Pages Container -->
+            <div id="domains-page" class="page active">
+                <div id="domains-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+            </div>
+            <div id="problems-page" class="page">
+                <div id="problems-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </div>
+            <div id="solutions-page" class="page">
+                <div id="solutions-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+            </div>
+            <div id="search-results-page" class="page">
+                <div id="search-results-container" class="space-y-4"></div>
+            </div>
+        </main>
+        
+        <footer class="text-center mt-8 py-4 border-t">
+            <p class="text-gray-600" data-translate-key="footerText">طراحی و توسعه: دکتر فاطمه زارعی</p>
+        </footer>
+    </div>
+
+    <!-- Solution Details Modal -->
+    <div id="solution-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-solution-text">
+        <div id="modal-content-solution" class="modal-base bg-white rounded-2xl shadow-2xl w-full max-w-3xl transform scale-95 opacity-0">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-start">
+                <h3 id="modal-solution-text" class="text-2xl font-bold text-gray-800"></h3>
+                <button class="close-modal-btn text-gray-400 hover:text-gray-700 text-4xl font-light" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
+                <div class="bg-red-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-red-800 mb-2" data-translate-key="problemAnalysisTitle">مسئله شناسی</h4>
+                    <p id="modal-problem" class="font-semibold"></p>
+                    <p id="modal-problem-description" class="text-gray-700 mt-1"></p>
+                </div>
+                <div id="modal-factors-container" class="space-y-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help/About Modal -->
+    <div id="help-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="modal-help-title">
+        <div id="modal-content-help" class="modal-base bg-white rounded-2xl shadow-2xl w-full max-w-3xl transform scale-95 opacity-0">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-start">
+                <h3 id="modal-help-title" class="text-2xl font-bold text-gray-800" data-translate-key="helpTitle">راهنمای جعبه راه‌حل‌ها</h3>
+                <button class="close-modal-btn text-gray-400 hover:text-gray-700 text-4xl font-light" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 max-h-[70vh] overflow-y-auto text-justify leading-relaxed">
+                <div>
+                    <h4 class="font-bold text-indigo-700 text-lg mb-2" data-translate-key="helpIntroTitle">مقدمه</h4>
+                    <p data-translate-key="helpIntroText">این پلتفرم به عنوان یک ابزار تصمیم‌یار برای برنامه‌ریزان آموزش بهداشت و ارتقای سلامت طراحی شده است. هدف اصلی "جعبه راه‌حل‌ها"، ارائه مجموعه‌ای از راه‌حل‌های مبتنی بر شواهد برای مقابله با مشکلات تغذیه‌ای نوجوانان است. شما می‌توانید با پیمایش در میان دامنه‌ها و مشکلات، به راه‌حل مناسب دست یابید و عوامل کلیدی مرتبط با هر راه‌حل را مشاهده نمایید.</p>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-indigo-700 text-lg mb-2" data-translate-key="helpHowToTitle">نحوه استفاده</h4>
+                    <ol class="list-decimal list-inside space-y-2" data-translate-key="helpHowToSteps">
+                    </ol>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                    <h4 class="font-bold text-indigo-700 text-lg mb-2" data-translate-key="helpScientificTitle">شناسنامه علمی</h4>
+                    <p class="text-sm" data-translate-key="helpScientificText">
+                    </p>
+                </div>
+                 <div>
+                    <h4 class="font-bold text-indigo-700 text-lg mb-2" data-translate-key="helpContactTitle">ارتباط با ما</h4>
+                    <p data-translate-key="helpContactText">برای اطلاعات بیشتر و همکاری‌های علمی، می‌توانید از طریق ایمیل زیر در ارتباط باشید:</p>
+                    <p class="text-left" dir="ltr"><strong>f.zarei@modares.ac.ir</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="index.tsx"></script>
+</body>
+</html>
